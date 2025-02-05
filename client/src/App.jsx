@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import {Navbar, Footer, Loader, Transactions, Services, Welcome} from "./components"
+import {Navbar, Footer, Loader, Transactions, Welcome} from "./components"
 import { TransactionContext,TransactionProvider } from './context/TransactionContext'
 
 const App = () => {
@@ -10,7 +10,6 @@ const App = () => {
           <Navbar/>
           <Welcome/>
         </div>
-        <Services/>
         <Transactions/>
         <Footer/>
       </div>

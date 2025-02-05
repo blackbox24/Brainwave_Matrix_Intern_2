@@ -1,26 +1,24 @@
-const main = async () => {
-    const transactionsFactory = await hre.ethers.getContractFactory("Transactions");
-    const productChain = await hre.ethers.getContractFactory("ProductChainTracking")
+import hre from "hardhat";
 
-    const transactionsContract = await transactionsFactory.deploy();
-    
-    const [deployer] = await ethers.getSigners();
-    console.log("Deploying contracts with the account:", deployer.address);
-  
-    // await transactionsContract.deployed();
-  
-    console.log("Transactions address: ", transactionsContract.address);
-    console.log("Product chain trackin address: ",productChain.address)
-  };
-  
-  const runMain = async () => {
-    try {
+const main = async () => {
+  const productChainFactory = await hre.ethers.getContractFactory("ProductChainTracking");
+  const productChainContract = await productChainFactory.deploy();
+
+  const [deployer] = await ethers.getSigners();
+  console.log("Deploying contracts with the account:", deployer.address);
+
+  await productChainContract.deployed();
+  console.log("Product chain tracking address: ", productChainContract.address);
+};
+
+const runMain = async () => {
+  try {
       await main();
       process.exit(0);
-    } catch (error) {
+  } catch (error) {
       console.error(error);
       process.exit(1);
-    }
-  };
-  
-  runMain();
+  }
+};
+
+runMain();

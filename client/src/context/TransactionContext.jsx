@@ -39,7 +39,7 @@ export const TransactionProvider = ({ children }) => {
             
             if (accounts.length) {
                 setCurrentAccount(accounts[0]);   
-                getAllTransactions();
+                
             } else {
                 console.log("No account found");
             }
@@ -55,9 +55,7 @@ export const TransactionProvider = ({ children }) => {
                 const transactionContract = await getEthereumContract();
     
                 const avaliableProducts = await transactionContract.getAllProduct();
-                console.log(avaliableProducts);
                 
-    
                 setTransactions(avaliableProducts);
             } else {
                 console.log("Ethereum is not present");
@@ -105,6 +103,7 @@ export const TransactionProvider = ({ children }) => {
 
     useEffect(() => {
         checkIfWalletConnected();
+        getAllTransactions();
     }, []);
 
     return (
